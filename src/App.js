@@ -1,23 +1,23 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import { Route } from 'wouter';
+
+import ListOfGifs from './components/ListOfGifs';
+
 import './App.css';
 
 function App() {
+  const [keyword, setKeyword] = useState('panda');
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <section className='App-content'>
+        {['pandas', 'ecuador', 'argentina'].map((key, idx) => (
+          <a key={idx} href={`/gif/${key}`}>
+            Gifs de {key}
+          </a>
+        ))}
+        <button onClick={() => setKeyword('mapache')}>Cambiar Keyword</button>
+        <Route path='/gif/:keyword' component={ListOfGifs} />
+      </section>
     </div>
   );
 }
