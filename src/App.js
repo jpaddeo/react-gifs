@@ -1,24 +1,43 @@
-import React, { useState } from 'react';
-import { Route } from 'wouter';
+import React from 'react';
+import { Link, Route } from 'wouter';
 
-import ListOfGifs from './components/ListOfGifs';
+import StaticContext from './context/StaticContext';
+import { GifsContextProvider } from './context/GifsContext';
+
+import Detail from './pages/Detail';
+import Home from './pages/Home';
+import SearchResults from './pages/SearchResults';
+
+import TrendingSearches from './components/TrendingSearches';
 
 import './App.css';
 
+const initialContextProvider = {
+  name: 'react-gifs',
+  dataAContextear: true,
+};
+
 function App() {
-  const [keyword, setKeyword] = useState('panda');
   return (
-    <div className='App'>
-      <section className='App-content'>
-        {['pandas', 'ecuador', 'argentina'].map((key, idx) => (
-          <a key={idx} href={`/gif/${key}`}>
-            Gifs de {key}
-          </a>
-        ))}
-        <button onClick={() => setKeyword('mapache')}>Cambiar Keyword</button>
-        <Route path='/gif/:keyword' component={ListOfGifs} />
-      </section>
-    </div>
+    <StaticContext.Provider value={initialContextProvider}>
+      <div className='App'>
+        <section className='App-content'>
+          <Link to='/'>
+            <figure className='App-logo'>
+              <img alt='Giffy logo' src='/logo192.png' />
+            </figure>
+          </Link>
+          <GifsContextProvider>
+            <Route path='/' component={Home} />
+            <Route path='/search/:keyword' component={SearchResults} />
+            <Route path='/gif/:id' component={Detail} />
+          </GifsContextProvider>
+          <div className='App-category'>
+            <TrendingSearches />
+          </div>
+        </section>
+      </div>
+    </StaticContext.Provider>
   );
 }
 
