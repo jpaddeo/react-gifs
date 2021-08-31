@@ -7064,6 +7064,11 @@
     "array-includes" "^3.1.2"
     "object.assign" "^4.1.2"
 
+"just-debounce-it@^1.5.0":
+  "integrity" "sha512-itSWJS5d2DTSCizVJ2Z0Djx/dGmUGfZe7WNfUfVP23+htGcIcPHbEjL4eB8ljojTs/+oYwLexImRRCP0A2WXjA=="
+  "resolved" "https://registry.npmjs.org/just-debounce-it/-/just-debounce-it-1.5.0.tgz"
+  "version" "1.5.0"
+
 "killable@^1.0.1":
   "integrity" "sha512-LzqtLKlUwirEUyl/nicirVmNiPvYs7l5n8wOPP7fyJVpUPkvCnW/vuiXGpylGUlnPDnB7311rARzAt3Mhswpjg=="
   "resolved" "https://registry.npmjs.org/killable/-/killable-1.0.1.tgz"
