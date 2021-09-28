@@ -17,11 +17,12 @@ const getGifs = ({
   keyword = 'morty',
   limit = 5,
   rating = 'g',
+  language = 'es',
   page = 0,
 } = {}) => {
   const apiUrl = `${API_URL}/gifs/search?api_key=${API_KEY}&q=${keyword}&limit=${limit}&offset=${
     page * limit
-  }&rating=${rating}&lang=en`;
+  }&rating=${rating}&lang=${language}`;
 
   return fetch(apiUrl)
     .then((res) => res.json())

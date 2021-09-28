@@ -9,8 +9,8 @@ import useNearScreen from '../../hooks/useNearScreen';
 import SearchForm from '../../components/SearchForm';
 
 export default function SearchResults({ params }) {
-  const { keyword, rating = 'g' } = params;
-  const { loading, gifs, setPage } = useGifs({ keyword, rating });
+  const { keyword, rating = 'g', language = 'es' } = params;
+  const { loading, gifs, setPage } = useGifs({ keyword, rating, language });
   const externalRef = useRef();
   const { isNearScreen } = useNearScreen({
     externalRef,
@@ -39,7 +39,11 @@ export default function SearchResults({ params }) {
         <span>Loading...</span>
       ) : (
         <div>
-          <SearchForm initialKeyword={keyword} initialRating={rating} />
+          <SearchForm
+            initialKeyword={keyword}
+            initialRating={rating}
+            initialLanguage={language}
+          />
           <h1>{decodeURIComponent(keyword)}</h1>
           <ListOfGifs gifs={gifs} />
         </div>
